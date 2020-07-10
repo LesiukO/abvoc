@@ -1,0 +1,15 @@
+.card {
+	border: 1px solid rgb(86, 3, 176);
+	border-radius: 20px;
+	padding: 20px;
+	margin: 15px;
+}
+
+.card__title {
+	border-bottom: 2px solid rgb(86, 3, 176);
+}
+
+.card__buttons {
+	display: flex;
+	justify-content: space-between;
+}
