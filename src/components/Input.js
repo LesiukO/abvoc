@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-const Input = () => {
-	return <input placeholder="type here..." type="text" className="input" />;
+const Input = props => {
+	const { onInput, value } = props;
+
+	return <input value={value} onChange={onInput} placeholder="type here..." type="text" className="input" />;
 };
 
 export default Input;
