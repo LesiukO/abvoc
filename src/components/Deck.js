@@ -3,7 +3,7 @@ import Card from './Card';
 import Button from './Button';
 
 const Deck = props => {
-	const { title, records } = props;
+	const { title, records, id } = props;
 
 	let learnedRecocdsNumber = 0;
 	let recordsNumber = 0;
@@ -11,6 +11,10 @@ const Deck = props => {
 		recordsNumber = records.length;
 		learnedRecocdsNumber = records.filter(rec => rec.learned === true).length;
 	}
+
+	const deleteHandler = () => {
+		props.deleteDeck(id);
+	};
 
 	return (
 		<Card>
@@ -21,7 +25,7 @@ const Deck = props => {
 			<p>Learning in progress</p>
 			<div className="card__buttons">
 				<Button>See deck</Button>
-				<Button>Delete</Button>
+				<Button onDelete={deleteHandler}>Delete</Button>
 			</div>
 		</Card>
 	);

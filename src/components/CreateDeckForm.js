@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import Input from './Input';
+import { uuid } from 'uuidv4';
 
 const CreateDeckForm = props => {
 	const [deckName, setDeckName] = useState('');
@@ -10,7 +11,8 @@ const CreateDeckForm = props => {
 		props.createDeck({
 			title: deckName,
 			learnedRecocdsNumber: 0,
-			recordsNumber: 0
+			recordsNumber: 0,
+			id: uuid()
 		});
 		setDeckName('');
 	};
