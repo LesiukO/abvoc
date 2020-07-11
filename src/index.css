@@ -38,3 +38,26 @@ code {
 	border-left: none;
 	border-image: initial;
 }
+
+.record {
+	border-bottom: 1px solid rgb(130, 102, 199);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0;
+}
+
+.record__info {
+	width: 90%;
+	margin-right: 20px;
+}
+
+.record__line {
+	height: 2px;
+	background-color: rgb(229, 205, 254);
+}
+
+.record__first-side,
+.record__second-side {
+	margin: 5px 0;
+}

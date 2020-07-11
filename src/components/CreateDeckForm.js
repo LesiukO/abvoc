@@ -10,8 +10,7 @@ const CreateDeckForm = props => {
 		e.preventDefault();
 		props.createDeck({
 			title: deckName,
-			learnedRecocdsNumber: 0,
-			recordsNumber: 0,
+			records: [],
 			id: uuid()
 		});
 		setDeckName('');
