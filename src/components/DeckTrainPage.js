@@ -18,12 +18,6 @@ const DeckTrainPage = props => {
 	const [translationValue, setTranslationValue] = useState('');
 	const [progress, setProgress] = useState(0);
 	const [colorOfPregress, setColorOfPregress] = useState('rgba(0,0,0,0)');
-	let colorOfProgress;
-	if (progress === 0) {
-		colorOfProgress = 'rgba(0, 0, 0, 0)';
-	} else if (progress > 0 && progress < 30) {
-		colorOfProgress = 'red';
-	}
 
 	useEffect(() => {
 		const deck = decks.filter(deck => deck.id === deckId)[0];
@@ -38,16 +32,9 @@ const DeckTrainPage = props => {
 	const translationValueHandler = e => {
 		setTranslationValue(e.target.value);
 
-		console.log(e.target.value);
-		// console.log(records[currentRecord].secondSide);
 		const lengthOfEnteredValue = e.target.value.length;
-		// console.log(lengthOfEnteredValue);
-
 		const subs = records[currentRecord].secondSide.slice(0, lengthOfEnteredValue);
-		console.log(subs);
-
 		const percent = (lengthOfEnteredValue / records[currentRecord].secondSide.length) * 100;
-		console.log(percent);
 
 		if (e.target.value === subs) {
 			setProgress(percent);
@@ -73,9 +60,12 @@ const DeckTrainPage = props => {
 			setProgress(0);
 			setColorOfPregress('rgba(0,0,0,0)');
 		}
-	};
 
-	// const defineProgress = () => {};
+		if (e.target.value.length === 0) {
+			setProgress(0);
+			setColorOfPregress('rgba(0,0,0,0)');
+		}
+	};
 
 	return (
 		<Container>
