@@ -3,11 +3,11 @@ import Button from './Button';
 import Loading from './Loading';
 
 const Record = props => {
-	const { firstSide, secondSide, id, rearnded } = props;
+	const { firstSide, secondSide, id, learnded } = props;
 
-	if (!firstSide || !secondSide) {
-		return <Loading />;
-	}
+	const deleteHandler = () => {
+		props.deleteRecord(id);
+	};
 
 	return (
 		<div className="record">
@@ -16,7 +16,7 @@ const Record = props => {
 				<div className="record__line"></div>
 				<p className="record__second-side">{secondSide}</p>
 			</div>
-			<Button>Delete</Button>
+			<Button onClick={deleteHandler}>Delete</Button>
 		</div>
 	);
 };

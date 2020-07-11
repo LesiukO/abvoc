@@ -34,7 +34,7 @@ const Deck = props => {
 						<Button>See deck</Button>
 					</Link>
 				)}
-				<Button onDelete={deleteHandler}>Delete</Button>
+				<Button onClick={deleteHandler}>Delete</Button>
 			</div>
 		</Card>
 	);

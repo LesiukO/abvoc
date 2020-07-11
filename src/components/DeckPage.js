@@ -19,7 +19,6 @@ const DeckPage = () => {
 		const deck = decks.filter(deck => deck.id === deckId)[0];
 		setDeck(deck);
 		setRecords(deck.records);
-		console.log(records);
 	}, [deckId]);
 
 	if (!deck) {
@@ -33,23 +32,36 @@ const DeckPage = () => {
 
 	const createRecord = record => {
 		setRecords(records.concat(record));
-		updateDeckInStorage(record);
+		saveRecordInStorage(record);
 		setDeck({
 			...deck,
 			records: records.concat(record)
 		});
 	};
 
-	const updateDeckInStorage = record => {
+	const deleteRecord = id => {
+		setRecords(records.filter(rec => rec.id !== id));
+		removeRecordFromStorage(id);
+	};
+
+	const removeRecordFromStorage = id => {
 		let decks = JSON.parse(localStorage.getItem('decks'));
 		decks = decks.filter(deck => deck.id !== deckId);
 		decks.push({
-			title: deck.title,
-			id: deck.id,
+			...deck,
+			records: records.filter(rec => rec.id !== id)
+		});
+		localStorage.setItem('decks', JSON.stringify(decks));
+	};
+
+	const saveRecordInStorage = record => {
+		let decks = JSON.parse(localStorage.getItem('decks'));
+		decks = decks.filter(deck => deck.id !== deckId);
+		decks.push({
+			...deck,
 			records: records.concat(record)
 		});
 		localStorage.setItem('decks', JSON.stringify(decks));
-		console.log(decks);
 	};
 
 	return (
@@ -59,7 +71,7 @@ const DeckPage = () => {
 			{records.length > 0 && (
 				<Card>
 					{records.map((record, index) => {
-						return <Record key={index} firstSide={record.firstSide} secondSide={record.secondSide} learned={record.learned} id={record.id} />;
+						return <Record deleteRecord={deleteRecord} key={index} firstSide={record.firstSide} secondSide={record.secondSide} learned={record.learned} id={record.id} />;
 					})}
 				</Card>
 			)}
