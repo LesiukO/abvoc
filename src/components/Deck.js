@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from './Card';
 import Button from './Button';
+import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 const Deck = props => {
 	const { title, records, id } = props;
@@ -24,7 +26,9 @@ const Deck = props => {
 			</p>
 			<p>Learning in progress</p>
 			<div className="card__buttons">
-				<Button>See deck</Button>
+				<Link to={`/deck/${id}`}>
+					<Button>See deck</Button>
+				</Link>
 				<Button onDelete={deleteHandler}>Delete</Button>
 			</div>
 		</Card>
