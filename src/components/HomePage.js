@@ -63,7 +63,7 @@ const HomePage = () => {
 			<InfoBlock />
 			<CreateDeckForm createDeck={createDeck} />
 			{decks.map((deck, index) => {
-				return <Deck deleteDeck={deleteDeck} records={deck.records} key={index} title={deck.title} id={deck.id} />;
+				return <Deck onPage="home" deleteDeck={deleteDeck} records={deck.records} key={index} title={deck.title} id={deck.id} />;
 			})}
 		</Container>
 	);

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Container from './Container';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import Deck from './Deck';
 import CreateRecordForm from './CreateRecordForm';
 import Card from './Card';
 import Record from './Record';
+import Button from './Button';
 
 const DeckPage = () => {
 	const deckId = useParams().deckId;
@@ -66,7 +67,10 @@ const DeckPage = () => {
 
 	return (
 		<Container>
-			<Deck singleView={true} deleteDeck={deleteDeck} title={deck.title} id={deck.id} records={deck.records} />
+			<Deck onPage="deck" deleteDeck={deleteDeck} title={deck.title} id={deck.id} records={deck.records} />
+			<Link to={`/deck/${deckId}/train`}>
+				<Button big={true}>train</Button>
+			</Link>
 			<CreateRecordForm createRecord={createRecord} />
 			{records.length > 0 && (
 				<Card>

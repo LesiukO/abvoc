@@ -11,7 +11,7 @@ code {
 
 .container {
 	max-width: 1000px;
-	padding: 20px 0;
+	padding: 15px;
 	margin: 0 auto;
 }
 
@@ -24,6 +24,20 @@ code {
 	padding: 0.65em 1.3em;
 	background-color: rgb(236, 232, 247);
 	cursor: pointer;
+}
+
+.button--big {
+	display: inline-block;
+	width: 100%;
+	font-size: 1em;
+	border-radius: 1.3em;
+	border: 1px solid rgb(130, 102, 199);
+	color: rgb(255, 255, 255);
+	padding: 1em;
+	background: linear-gradient(30deg, rgb(86, 3, 176) 30%, rgb(130, 102, 199) 100%);
+	cursor: pointer;
+	font-weight: 700;
+	font-style: italic;
 }
 
 .input {

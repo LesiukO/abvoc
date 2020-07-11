@@ -20,6 +20,8 @@ const CreateRecordForm = props => {
 		});
 		setIsCreationMode(false);
 		setSearchRecordValue('');
+		setFirstSide('');
+		setSecondSide('');
 	};
 
 	const searchInputHandler = e => {
