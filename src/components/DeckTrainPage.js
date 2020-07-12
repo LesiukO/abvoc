@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import Card from './Card';
 import Input from './Input';
 
-import { Line, Circle } from 'rc-progress';
+import { Line } from 'rc-progress';
 
 const DeckTrainPage = props => {
 	const deckId = useParams().deckId;

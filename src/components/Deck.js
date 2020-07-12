@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import Button from './Button';
 import { Link } from 'react-router-dom';
 
+import { Line } from 'rc-progress';
+
 const Deck = props => {
 	const { title, records, id } = props;
+	const [progress, setProgress] = useState(0);
 
 	let learnedRecocdsNumber = 0;
 	let recordsNumber = 0;
@@ -12,6 +15,11 @@ const Deck = props => {
 		recordsNumber = records.length;
 		learnedRecocdsNumber = records.filter(rec => rec.learned === true).length;
 	}
+
+	useEffect(() => {
+		// setProgress((learnedRecocdsNumber / recordsNumber) * 100);
+		setProgress(50);
+	}, []);
 
 	const deleteHandler = () => {
 		props.deleteDeck(id);
@@ -21,6 +29,7 @@ const Deck = props => {
 		return (
 			<Card>
 				<h3 className="card__title">{title}</h3>
+				<Line percent={progress} strokeWidth="0.4" strokeColor={'rgb(86, 3, 176)'} />
 				<p>
 					{learnedRecocdsNumber}/{recordsNumber} records learned
 				</p>
@@ -38,6 +47,7 @@ const Deck = props => {
 		return (
 			<Card>
 				<h3 className="card__title">{title}</h3>
+				<Line percent={progress} strokeWidth="0.4" strokeColor={'rgb(86, 3, 176)'} />
 				<p>
 					{learnedRecocdsNumber}/{recordsNumber} records learned
 				</p>
@@ -55,6 +65,7 @@ const Deck = props => {
 		return (
 			<Card>
 				<h3 className="card__title">{title}</h3>
+				<Line percent={progress} strokeWidth="0.4" strokeColor={'rgb(86, 3, 176)'} />
 				<p>
 					{learnedRecocdsNumber}/{recordsNumber} records learned
 				</p>

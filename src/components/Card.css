@@ -6,7 +6,8 @@
 }
 
 .card__title {
-	border-bottom: 2px solid rgb(86, 3, 176);
+	margin: 0;
+	padding: 0;
 }
 
 .card__buttons {
