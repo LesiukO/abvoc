@@ -16,6 +16,7 @@ const CreateRecordForm = props => {
 			firstSide,
 			secondSide,
 			learned: false,
+			trainedNumber: 0,
 			id: uuid()
 		});
 		setIsCreationMode(false);

@@ -75,7 +75,7 @@ const DeckPage = () => {
 			{records.length > 0 && (
 				<Card>
 					{records.map((record, index) => {
-						return <Record deleteRecord={deleteRecord} key={index} firstSide={record.firstSide} secondSide={record.secondSide} learned={record.learned} id={record.id} />;
+						return <Record trainedNumber={record.trainedNumber} deleteRecord={deleteRecord} key={index} firstSide={record.firstSide} secondSide={record.secondSide} learned={record.learned} id={record.id} />;
 					})}
 				</Card>
 			)}

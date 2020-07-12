@@ -50,7 +50,9 @@ const DeckTrainPage = props => {
 			setColorOfPregress('rgba(0,0,0,0)');
 		}
 
-		if (e.target.value === records[currentRecord].firstSide) {
+		if (e.target.value === records[currentRecord].secondSide) {
+			incrementTrainedNumberInCurrentRecord();
+
 			if (currentRecord < records.length - 1) {
 				setCurrentRecord(curr => curr + 1);
 			} else {
@@ -65,6 +67,25 @@ const DeckTrainPage = props => {
 			setProgress(0);
 			setColorOfPregress('rgba(0,0,0,0)');
 		}
+	};
+
+	const incrementTrainedNumberInCurrentRecord = () => {
+		if (records[currentRecord].trainedNumber < 5) {
+			records[currentRecord].trainedNumber++;
+
+			updateDeckInStorage(deckId);
+		}
+		console.log(records);
+		console.log(deck);
+	};
+
+	const updateDeckInStorage = id => {
+		let decks = JSON.parse(localStorage.getItem('decks'));
+		decks = decks.filter(deck => deck.id !== deckId);
+		decks.push({
+			...deck
+		});
+		localStorage.setItem('decks', JSON.stringify(decks));
 	};
 
 	return (

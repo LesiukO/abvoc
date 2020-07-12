@@ -71,7 +71,7 @@ const Deck = props => {
 				</p>
 
 				<div className="card__buttons">
-					<Link to={`/`}>
+					<Link to={`/deck/${id}`}>
 						<Button>Back</Button>
 					</Link>
 				</div>
