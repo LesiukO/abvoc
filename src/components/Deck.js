@@ -6,19 +6,34 @@ import { Link } from 'react-router-dom';
 import { Line } from 'rc-progress';
 
 const Deck = props => {
-	const { title, records, id } = props;
+	// const { title, records, id } = props;
+	const { title, id } = props;
+
+	const [records, setRecords] = useState(props.records);
+
 	const [progress, setProgress] = useState(0);
 
-	let learnedRecocdsNumber = 0;
-	let recordsNumber = 0;
-	if (records) {
-		recordsNumber = records.length;
-		learnedRecocdsNumber = records.filter(rec => rec.learned === true).length;
-	}
+	const [numberOfRecords, setNumberOfRecords] = useState(0);
+	const [numberOfLearnedRecords, setNumberOfLearnedRecords] = useState(0);
+	const [numberOfSuccessfullTrainings, setNumberOfSuccessfullTrainings] = useState(0);
 
 	useEffect(() => {
-		// setProgress((learnedRecocdsNumber / recordsNumber) * 100);
-		setProgress(50);
+		let numberOfRecords = 0;
+		let numberOfLearnedRecords = 0;
+		let numberOfSuccessfullTrainings = 0;
+
+		console.log(records);
+		records.forEach(record => {
+			numberOfRecords++;
+			if (record.learned) numberOfLearnedRecords++;
+			numberOfSuccessfullTrainings = numberOfSuccessfullTrainings + record.trainedNumber;
+		});
+		console.log(records);
+		console.log(numberOfSuccessfullTrainings);
+
+		setNumberOfRecords(numberOfRecords);
+		setNumberOfLearnedRecords(numberOfLearnedRecords);
+		setNumberOfSuccessfullTrainings(numberOfSuccessfullTrainings);
 	}, []);
 
 	const deleteHandler = () => {
@@ -31,7 +46,7 @@ const Deck = props => {
 				<h3 className="card__title">{title}</h3>
 				<Line percent={progress} strokeWidth="0.4" strokeColor={'rgb(86, 3, 176)'} />
 				<p>
-					{learnedRecocdsNumber}/{recordsNumber} records learned
+					{numberOfLearnedRecords}/{numberOfRecords} records learned
 				</p>
 				<p>Learning in progress</p>
 
@@ -49,7 +64,7 @@ const Deck = props => {
 				<h3 className="card__title">{title}</h3>
 				<Line percent={progress} strokeWidth="0.4" strokeColor={'rgb(86, 3, 176)'} />
 				<p>
-					{learnedRecocdsNumber}/{recordsNumber} records learned
+					{numberOfLearnedRecords}/{numberOfRecords} records learned
 				</p>
 				<p>Learning in progress</p>
 
@@ -67,7 +82,7 @@ const Deck = props => {
 				<h3 className="card__title">{title}</h3>
 				<Line percent={progress} strokeWidth="0.4" strokeColor={'rgb(86, 3, 176)'} />
 				<p>
-					{learnedRecocdsNumber}/{recordsNumber} records learned
+					{numberOfLearnedRecords}/{numberOfRecords} records learned
 				</p>
 
 				<div className="card__buttons">

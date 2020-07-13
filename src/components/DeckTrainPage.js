@@ -10,7 +10,13 @@ import { Line } from 'rc-progress';
 const DeckTrainPage = props => {
 	const deckId = useParams().deckId;
 
-	const decks = JSON.parse(localStorage.getItem('decks'));
+	let decks;
+	if (JSON.parse(localStorage.getItem('decks'))) {
+		decks = JSON.parse(localStorage.getItem('decks'));
+	} else {
+		decks = [];
+	}
+
 	const [deck, setDeck] = useState(null);
 	const [records, setRecords] = useState([]);
 	const [currentRecord, setCurrentRecord] = useState(0);
@@ -36,7 +42,13 @@ const DeckTrainPage = props => {
 		const subs = records[currentRecord].secondSide.slice(0, lengthOfEnteredValue);
 		const percent = (lengthOfEnteredValue / records[currentRecord].secondSide.length) * 100;
 
+		if (e.target.value === subs && records[currentRecord].trainedNumber >= 4) {
+			records[currentRecord].learned = true;
+		}
+
 		if (e.target.value === subs) {
+			console.log(records);
+
 			setProgress(percent);
 			if (percent > 0 && percent < 40) {
 				setColorOfPregress('red');
@@ -75,8 +87,6 @@ const DeckTrainPage = props => {
 
 			updateDeckInStorage(deckId);
 		}
-		console.log(records);
-		console.log(deck);
 	};
 
 	const updateDeckInStorage = id => {

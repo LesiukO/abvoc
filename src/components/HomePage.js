@@ -5,47 +5,12 @@ import CreateDeckForm from './CreateDeckForm';
 import Deck from './Deck';
 
 const HomePage = () => {
-	// const [decks, setDecks] = useState([
-	// 	{
-	// 		title: 'deck1',
-	// 		records: [
-	// 			{
-	// 				firstSide: 'apple',
-	// 				secondSide: 'яблуко',
-	// 				learned: false
-	// 			},
-	// 			{
-	// 				firstSide: 'apple',
-	// 				secondSide: 'яблуко',
-	// 				learned: true
-	// 			}
-	// 		]
-	// 	},
-	// 	{
-	// 		title: 'deck1',
-	// 		records: [
-	// 			{
-	// 				firstSide: 'apple',
-	// 				secondSide: 'яблуко',
-	// 				learned: false
-	// 			},
-	// 			{
-	// 				firstSide: 'apple',
-	// 				secondSide: 'яблуко',
-	// 				learned: true
-	// 			},
-	// 			{
-	// 				firstSide: 'apple',
-	// 				secondSide: 'яблуко',
-	// 				learned: true
-	// 			}
-	// 		]
-	// 	}
-	// ]);
 	const [decks, setDecks] = useState([]);
 
 	useEffect(() => {
-		setDecks(JSON.parse(localStorage.getItem('decks')));
+		if (JSON.parse(localStorage.getItem('decks'))) {
+			setDecks(JSON.parse(localStorage.getItem('decks')));
+		}
 	}, []);
 
 	const createDeck = deck => {

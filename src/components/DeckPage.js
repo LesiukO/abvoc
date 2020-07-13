@@ -73,7 +73,7 @@ const DeckPage = () => {
 			</Link>
 			<CreateRecordForm createRecord={createRecord} />
 			{records.length > 0 && (
-				<Card>
+				<Card noPadding={true}>
 					{records.map((record, index) => {
 						return <Record trainedNumber={record.trainedNumber} deleteRecord={deleteRecord} key={index} firstSide={record.firstSide} secondSide={record.secondSide} learned={record.learned} id={record.id} />;
 					})}

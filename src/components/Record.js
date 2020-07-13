@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
-import Loading from './Loading';
 
 import { Line } from 'rc-progress';
 
@@ -13,9 +12,8 @@ const Record = props => {
 	};
 
 	useEffect(() => {
-		console.log(trainedNumber);
 		setProgress((trainedNumber / 5) * 100);
-	}, []);
+	}, [trainedNumber]);
 
 	return (
 		<div className="record">
