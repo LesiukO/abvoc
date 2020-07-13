@@ -10,7 +10,6 @@ const Deck = props => {
 	const { title, id } = props;
 
 	const [records, setRecords] = useState(props.records);
-
 	const [progress, setProgress] = useState(0);
 
 	const [numberOfRecords, setNumberOfRecords] = useState(0);
@@ -31,10 +30,14 @@ const Deck = props => {
 		console.log(records);
 		console.log(numberOfSuccessfullTrainings);
 
+		let prog = (numberOfSuccessfullTrainings / (numberOfRecords * 5)) * 100;
+		setProgress((numberOfSuccessfullTrainings / (numberOfRecords * 5)) * 100);
+		console.log(prog);
+
 		setNumberOfRecords(numberOfRecords);
 		setNumberOfLearnedRecords(numberOfLearnedRecords);
 		setNumberOfSuccessfullTrainings(numberOfSuccessfullTrainings);
-	}, []);
+	}, [records]);
 
 	const deleteHandler = () => {
 		props.deleteDeck(id);

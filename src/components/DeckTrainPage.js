@@ -10,13 +10,7 @@ import { Line } from 'rc-progress';
 const DeckTrainPage = props => {
 	const deckId = useParams().deckId;
 
-	let decks;
-	if (JSON.parse(localStorage.getItem('decks'))) {
-		decks = JSON.parse(localStorage.getItem('decks'));
-	} else {
-		decks = [];
-	}
-
+	const [decks, setDecks] = useState([]);
 	const [deck, setDeck] = useState(null);
 	const [records, setRecords] = useState([]);
 	const [currentRecord, setCurrentRecord] = useState(0);
@@ -26,6 +20,9 @@ const DeckTrainPage = props => {
 	const [colorOfPregress, setColorOfPregress] = useState('rgba(0,0,0,0)');
 
 	useEffect(() => {
+		if (JSON.parse(localStorage.getItem('decks'))) {
+			setDecks(JSON.parse(localStorage.getItem('decks')));
+		}
 		const deck = decks.filter(deck => deck.id === deckId)[0];
 		setDeck(deck);
 		setRecords(deck.records);

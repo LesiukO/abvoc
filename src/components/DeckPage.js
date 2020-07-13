@@ -10,13 +10,18 @@ import Button from './Button';
 const DeckPage = () => {
 	const deckId = useParams().deckId;
 
-	const decks = JSON.parse(localStorage.getItem('decks'));
+	// const decks = JSON.parse(localStorage.getItem('decks'));
+
+	const [decks, setDecks] = useState([]);
 	const [deck, setDeck] = useState(null);
 	const [records, setRecords] = useState([]);
 
 	const history = useHistory();
 
 	useEffect(() => {
+		if (JSON.parse(localStorage.getItem('decks'))) {
+			setDecks(JSON.parse(localStorage.getItem('decks')));
+		}
 		const deck = decks.filter(deck => deck.id === deckId)[0];
 		setDeck(deck);
 		setRecords(deck.records);
